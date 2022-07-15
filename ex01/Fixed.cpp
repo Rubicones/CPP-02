@@ -22,7 +22,7 @@ Fixed::Fixed(const float num){
 
 
 Fixed::Fixed(const Fixed &a){
-	(void)a;
+	*this = a;
 	std::cout << "Copy constructor called " << std::endl;
 }
 
@@ -34,7 +34,7 @@ int Fixed::toInt() const {
 	return (_value >> 8);
 }
 
-int Fixed::getRawBits() {
+int Fixed::getRawBits() const{
 	std::cout << "getRawBits memeber function called " << std::endl;
 	return _value;
 }
@@ -46,13 +46,12 @@ Fixed::~Fixed(){
 	std::cout << "Destructor called " << std::endl;
 }
 Fixed & Fixed::operator=(const Fixed &a){
-	(void)a;
+	_value = a.getRawBits();
 	std::cout << "Assignment operator called " << std::endl;
 	return (*this);
 }
 
-Fixed & Fixed::operator<<(const Fixed &a){
-	(void)a;
-	std::cout << "Assignment operator called " << std::endl;
-	return (*this);
+std::ostream & operator<<(std::ostream &stream, Fixed const & number){
+	stream << number.toFloat();
+	return (stream);
 }

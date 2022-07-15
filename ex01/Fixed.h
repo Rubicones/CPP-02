@@ -14,7 +14,7 @@ public:
 	Fixed(const float num);
 	Fixed(const Fixed &a);
 	Fixed & operator = (const Fixed &a);
-	int  getRawBits(void);
+	int  getRawBits(void) const;
 	void setRawBits(int const raw);
 	float toFloat( void ) const;
 	int toInt( void ) const;
@@ -23,6 +23,8 @@ private:
 	uint64_t _value;
 	static const int _fracBits = 8;
 };
+
+std::ostream & operator<<(std::ostream &stream, Fixed const & number);
 
 
 #endif //FIXED_H
