@@ -6,6 +6,7 @@
 #define FIXED_H
 
 #include <iostream>
+#include <cstdint>
 
 class Fixed{
 public:
